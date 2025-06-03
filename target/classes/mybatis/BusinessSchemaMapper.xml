@@ -1,0 +1,32 @@
+<mapper namespace="com.chris.dongodng.mapper.BusinessSchemaMapper">
+
+    <!-- 插入数据 -->
+    <insert id="insertBusinessSchema" parameterType="com.chris.dongdong.entity.BusinessSchemaEntity">
+        INSERT INTO business_schema (tenant_id, creator)
+        VALUES (#{tenantId}, #{creator})
+    </insert>
+
+    <!-- 更新数据 -->
+    <update id="updateBusinessSchema" parameterType="com.chris.dongdong.entity.BusinessSchemaEntity">
+        UPDATE business_schema
+        SET tenant_id = #{tenantId},
+            creator = #{creator}
+        WHERE schema_id = #{schemaId}
+    </update>
+
+    <!-- 根据schema_id查询数据 -->
+    <select id="selectBusinessSchemaById" parameterType="java.lang.Long" 
+            resultType="com.chris.dongdong.entity.BusinessSchemaEntity">
+        SELECT schema_id, tenant_id, creator, create_time
+        FROM business_schema
+        WHERE schema_id = #{schemaId}
+    </select>
+
+    <!-- 查询所有数据 -->
+    <select id="selectAllBusinessSchemas" 
+            resultType="com.chris.dongdong.entity.BusinessSchemaEntity">
+        SELECT schema_id, tenant_id, creator, create_time
+        FROM business_schema
+    </select>
+
+</mapper>

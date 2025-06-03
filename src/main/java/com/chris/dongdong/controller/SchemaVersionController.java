@@ -1,0 +1,31 @@
+package com.chris.dongdong.controller;
+
+import com.chris.dongdong.dto.SchemaVersionRequest;
+import com.chris.dongdong.dto.SchemaVersionResponse;
+import com.chris.dongdong.service.SchemaVersionService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/schema-versions")
+public class SchemaVersionController {
+
+    private final SchemaVersionService service;
+
+    public SchemaVersionController(SchemaVersionService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public SchemaVersionResponse create(@RequestBody SchemaVersionRequest request) {
+        return service.create(request);
+    }
+
+    @PutMapping("/{versionId}")
+    public SchemaVersionResponse update(
+            @PathVariable Long versionId, 
+            @RequestBody SchemaVersionRequest request) {
+        return service.update(versionId, request);
+    }
+}
