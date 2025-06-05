@@ -1,8 +1,8 @@
 package com.chris.dongdong.dto;
 
-public class CommonResponse {
+public class CommonResponse<T> {
     private int code;
-    private Object data;
+    private T data;
     private String msg;
 
     // 无参构造器
@@ -10,7 +10,7 @@ public class CommonResponse {
     }
 
     // 全参构造器
-    public CommonResponse(int code, Object data, String msg) {
+    public CommonResponse(int code, T data, String msg) {
         this.code = code;
         this.data = data;
         this.msg = msg;
@@ -47,7 +47,7 @@ public class CommonResponse {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 

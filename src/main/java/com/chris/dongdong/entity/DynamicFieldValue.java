@@ -1,8 +1,11 @@
 package com.chris.dongdong.entity;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Data
 public class DynamicFieldValue {
     private Long dataId;
     private String fieldKey;

@@ -2,7 +2,8 @@ package com.chris.dongdong.service;
 
 import com.chris.dongdong.dto.DynamicDataRequest;
 import com.chris.dongdong.dto.DynamicDataRequestDTO;
-import com.chris.dongdong.dto.DynamicDataResponse;
+import com.chris.dongdong.dto.DynamicDataResponseDTO;
+import com.chris.dongdong.dto.DynamicDataResponseDTO;
 import com.chris.dongdong.entity.DynamicDataEntity;
 import com.chris.dongdong.mapper.DynamicDataMapper;
 import jakarta.annotation.Resource;
@@ -22,8 +23,8 @@ public class DynamicDataService {
         return true;
     }
 
-    private DynamicDataResponse convertToResponse(DynamicDataEntity entity) {
-        DynamicDataResponse response = new DynamicDataResponse();
+    private DynamicDataResponseDTO convertToResponse(DynamicDataEntity entity) {
+        DynamicDataResponseDTO response = new DynamicDataResponseDTO();
         BeanUtils.copyProperties(entity, response);
         return response;
     }

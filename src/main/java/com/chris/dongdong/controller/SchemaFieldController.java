@@ -5,6 +5,8 @@ import com.chris.dongdong.service.SchemaFieldService;
 import com.chris.dongdong.dto.CommonResponse;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/schema-fields")
 public class SchemaFieldController {
