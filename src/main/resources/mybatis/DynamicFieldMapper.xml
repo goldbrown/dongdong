@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chris.dongdong.mapper.DynamicFieldMapper">
+
+    <insert id="insert" parameterType="DynamicFieldValue">
+        INSERT INTO dynamic_field_values
+        (data_id, field_key, string_value, number_value, date_value, enum_value)
+        VALUES (
+            #{dataId},
+            #{fieldKey},
+            <choose>
+                <when test="stringValue != null">#{stringValue}</when>
+                <otherwise>NULL</otherwise>
+            </choose>,
+            <choose>
+                <when test="numberValue != null">#{numberValue}</when>
+                <otherwise>NULL</otherwise>
+            </choose>,
+            <choose>
+                <when test="dateValue != null">#{dateValue}</when>
+                <otherwise>NULL</otherwise>
+            </choose>,
+            <choose>
+                <when test="enumValue != null">#{enumValue}</when>
+                <otherwise>NULL</otherwise>
+            </choose>
+        )
+    </insert>
+
+    <update id="update" parameterType="DynamicFieldValue">
+        UPDATE dynamic_field_values
+        <set>
+            <if test="stringValue != null">string_value = #{stringValue},</if>
+            <if test="numberValue != null">number_value = #{numberValue},</if>
+            <if test="dateValue != null">date_value = #{dateValue},</if>
+            <if test="enumValue != null">enum_value = #{enumValue}</if>
+        </set>
+        WHERE data_id = #{dataId} AND field_key = #{fieldKey}
+    </update>
+
+    <!-- 原始查询保持不变 -->
+    <select id="selectByCondition" resultType="DynamicFieldValue">
+        SELECT * FROM dynamic_field_values
+        <where>
+            <if test="dataId != null">AND data_id = #{dataId}</if>
+            <if test="fieldKey != null">AND field_key = #{fieldKey}</if>
+            <if test="stringValue != null">AND string_value = #{stringValue}</if>
+            <if test="numberValue != null">AND number_value = #{numberValue}</if>
+            <if test="enumValue != null">AND enum_value = #{enumValue}</if>
+        </where>
+    </select>
+
+</mapper>

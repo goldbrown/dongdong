@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chris.dongdong.mapper.DynamicDataMapper">
+
+    <insert id="insert" parameterType="DynamicData" useGeneratedKeys="true" keyProperty="dataId">
+        INSERT INTO dynamic_data 
+        (schema_id, version_id, created_by)
+        VALUES (#{schemaId}, #{versionId}, #{createdBy})
+    </insert>
+
+    <update id="update" parameterType="DynamicData">
+        UPDATE dynamic_data
+        <set>
+            <if test="schemaId != null">schema_id = #{schemaId},</if>
+            <if test="versionId != null">version_id = #{versionId},</if>
+            <if test="createdBy != null">created_by = #{createdBy}</if>
+        </set>
+        WHERE data_id = #{dataId}
+    </update>
+
+    <select id="selectByDataId" resultType="DynamicData">
+        SELECT * FROM dynamic_data WHERE data_id = #{dataId}
+    </select>
+
+    <select id="selectBySchema" resultType="DynamicData">
+        SELECT * FROM dynamic_data 
+        WHERE schema_id = #{schemaId} AND version_id = #{versionId}
+    </select>
+
+</mapper>
