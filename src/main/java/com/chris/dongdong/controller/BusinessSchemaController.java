@@ -17,13 +17,13 @@ public class BusinessSchemaController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public CommonResponse create(@RequestBody BusinessSchemaEntity schema) {
         service.create(schema);
         return CommonResponse.success();
     }
 
-    @PutMapping("/{schemaId}")
+    @PostMapping("/update/{schemaId}")
     public CommonResponse update(
             @PathVariable Long schemaId,
             @RequestBody BusinessSchemaEntity schema) {
@@ -37,7 +37,7 @@ public class BusinessSchemaController {
         return CommonResponse.success(service.getById(schemaId));
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public CommonResponse<List<BusinessSchemaEntity>> getAll() {
         return CommonResponse.success(service.getAll());
     }

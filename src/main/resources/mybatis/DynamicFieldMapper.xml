@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chris.dongdong.mapper.DynamicFieldMapper">
 
-    <insert id="insert" parameterType="DynamicFieldValue">
+    <insert id="insert" parameterType="com.chris.dongdong.entity.DynamicFieldValueEntity">
         INSERT INTO dynamic_field_values
         (data_id, field_key, string_value, number_value, date_value, enum_value)
         VALUES (
@@ -28,7 +28,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="DynamicFieldValue">
+    <update id="update" parameterType="com.chris.dongdong.entity.DynamicFieldValueEntity">
         UPDATE dynamic_field_values
         <set>
             <if test="stringValue != null">string_value = #{stringValue},</if>
@@ -40,7 +40,7 @@
     </update>
 
     <!-- 原始查询保持不变 -->
-    <select id="selectByCondition" resultType="DynamicFieldValue">
+    <select id="selectByCondition" resultType="com.chris.dongdong.entity.DynamicFieldValueEntity">
         SELECT * FROM dynamic_field_values
         <where>
             <if test="dataId != null">AND data_id = #{dataId}</if>

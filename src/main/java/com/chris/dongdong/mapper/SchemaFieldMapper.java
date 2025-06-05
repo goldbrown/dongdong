@@ -1,8 +1,10 @@
 package com.chris.dongdong.mapper;
 
 import com.chris.dongdong.entity.SchemaFieldEntity;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+@Mapper
 public interface SchemaFieldMapper {
     int insert(SchemaFieldEntity entity);
     int update(SchemaFieldEntity entity);

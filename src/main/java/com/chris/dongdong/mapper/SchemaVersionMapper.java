@@ -1,8 +1,10 @@
 package com.chris.dongdong.mapper;
 
 import com.chris.dongdong.entity.SchemaVersionEntity;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+@Mapper
 public interface SchemaVersionMapper {
     int insert(SchemaVersionEntity entity);
     int update(SchemaVersionEntity entity);
