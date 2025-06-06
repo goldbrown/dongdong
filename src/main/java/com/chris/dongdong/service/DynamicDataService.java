@@ -1,8 +1,6 @@
 package com.chris.dongdong.service;
 
-import com.chris.dongdong.dto.DynamicDataRequest;
 import com.chris.dongdong.dto.DynamicDataRequestDTO;
-import com.chris.dongdong.dto.DynamicDataResponseDTO;
 import com.chris.dongdong.dto.DynamicDataResponseDTO;
 import com.chris.dongdong.entity.DynamicDataEntity;
 import com.chris.dongdong.mapper.DynamicDataMapper;

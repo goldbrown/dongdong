@@ -3,6 +3,7 @@ package com.chris.dongdong.mapper;
 
 import com.chris.dongdong.entity.DynamicDataEntity;
 import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
 @Mapper

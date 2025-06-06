@@ -1,8 +1,8 @@
 package com.chris.dongdong.controller;
 
+import com.chris.dongdong.dto.CommonResponse;
 import com.chris.dongdong.entity.SchemaFieldEntity;
 import com.chris.dongdong.service.SchemaFieldService;
-import com.chris.dongdong.dto.CommonResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

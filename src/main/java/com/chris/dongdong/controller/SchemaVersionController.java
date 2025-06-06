@@ -3,7 +3,6 @@ package com.chris.dongdong.controller;
 import com.chris.dongdong.dto.SchemaVersionRequest;
 import com.chris.dongdong.dto.SchemaVersionResponse;
 import com.chris.dongdong.service.SchemaVersionService;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
