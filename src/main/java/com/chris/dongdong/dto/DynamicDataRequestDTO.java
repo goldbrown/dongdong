@@ -1,5 +1,7 @@
 package com.chris.dongdong.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class DynamicDataRequestDTO {
@@ -7,6 +9,7 @@ public class DynamicDataRequestDTO {
     private String schemaId;
     private Long versionId;
     private String createdBy;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdAt;
 
     // 无参构造器

@@ -2,16 +2,16 @@ package com.chris.dongdong.controller;
 
 import com.chris.dongdong.dto.CommonResponse;
 import com.chris.dongdong.entity.DynamicFieldValue;
-import com.chris.dongdong.service.DynamicFieldService;
+import com.chris.dongdong.service.DynamicFieldValueService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/dynamic-fields")
-public class DynamicFieldController {
+public class DynamicFieldValueController {
 
-    private final DynamicFieldService service;
+    private final DynamicFieldValueService service;
 
-    public DynamicFieldController(DynamicFieldService service) {
+    public DynamicFieldValueController(DynamicFieldValueService service) {
         this.service = service;
     }
 
@@ -22,7 +22,7 @@ public class DynamicFieldController {
     }
 
     @PostMapping("/update/{dataId}/{fieldKey}")
-    public CommonResponse update(
+    public CommonResponse<Void> update(
             @PathVariable Long dataId,
             @PathVariable String fieldKey,
             @RequestBody DynamicFieldValue fieldValue) {

@@ -2,14 +2,15 @@ package com.chris.dongdong.service;
 
 import com.chris.dongdong.entity.SchemaFieldEntity;
 import com.chris.dongdong.mapper.SchemaFieldMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class SchemaFieldService {
-
-    private final SchemaFieldMapper mapper;
+    @Autowired
+    private SchemaFieldMapper mapper;
 
     public SchemaFieldService(SchemaFieldMapper mapper) {
         this.mapper = mapper;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chris.dongdong.mapper.DynamicFieldMapper">
+<mapper namespace="com.chris.dongdong.mapper.DynamicFieldValueMapper">
 
     <insert id="insert" parameterType="com.chris.dongdong.entity.DynamicFieldValueEntity">
         INSERT INTO dynamic_field_values

@@ -26,7 +26,7 @@ public class CommonResponse<T> {
         return new CommonResponse(200, null, "success");
     }
 
-    public static CommonResponse success(Object data) {
+    public static <T> CommonResponse success(T data) {
         return new CommonResponse(200, data, "success");
     }
 

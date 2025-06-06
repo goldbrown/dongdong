@@ -1,15 +1,16 @@
 package com.chris.dongdong.service;
 
 import com.chris.dongdong.entity.DynamicFieldValue;
-import com.chris.dongdong.mapper.DynamicFieldMapper;
+import com.chris.dongdong.mapper.DynamicFieldValueMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DynamicFieldService {
+public class DynamicFieldValueService {
+    @Autowired
+    private DynamicFieldValueMapper mapper;
 
-    private final DynamicFieldMapper mapper;
-
-    public DynamicFieldService(DynamicFieldMapper mapper) {
+    public DynamicFieldValueService(DynamicFieldValueMapper mapper) {
         this.mapper = mapper;
     }
 
