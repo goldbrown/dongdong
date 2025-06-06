@@ -32,10 +32,10 @@ CREATE TABLE schema_field (
   version_id BIGINT NOT NULL,
   field_key VARCHAR(50) character set utf8mb4 collate utf8mb4_bin NOT NULL,
   display_name VARCHAR(100) character set utf8mb4 collate utf8mb4_bin,
-  data_type varchar(20) character set utf8mb4 collate utf8mb4_bin, --STRING NUMBER DATE BOOLEAN
-  optinal_constraint JSON default null,  -- {required:true, format:"email", min:0, options:[]}
+  data_type varchar(20) character set utf8mb4 collate utf8mb4_bin, 
+  optinal_constraint JSON default null,  
   index idx_version_field (version_id, field_key),
-  INDEX idx_field_key (field_key)  -- 加速字段级查询
+  INDEX idx_field_key (field_key)  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
@@ -45,9 +45,9 @@ CREATE TABLE schema_field (
 -- 动态数据主表（所有业务数据入口）
 CREATE TABLE dynamic_data (
   data_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  schema_id VARCHAR(50) NOT NULL,
+  schema_id VARCHAR(50) character set utf8mb4 collate utf8mb4_bin NOT NULL,
   version_id BIGINT NOT NULL,  -- 关联schema_version
-  created_by VARCHAR(50) NOT NULL,
+  created_by VARCHAR(50) character set utf8mb4 collate utf8mb4_bin NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   INDEX idx_schema (schema_id, version_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -55,15 +55,14 @@ CREATE TABLE dynamic_data (
 -- 动态字段值存储表（支持高效查询）
 CREATE TABLE dynamic_field_values (
   data_id BIGINT NOT NULL,
-  field_key VARCHAR(50) NOT NULL,
-  string_value VARCHAR(500),
+  field_key VARCHAR(50) character set utf8mb4 collate utf8mb4_bin NOT NULL,
+  string_value VARCHAR(500) character set utf8mb4 collate utf8mb4_bin,
   number_value DECIMAL(18,4),
   date_value DATETIME,
-  enum_value VARCHAR(100),
+  enum_value VARCHAR(100) character set utf8mb4 collate utf8mb4_bin,
   PRIMARY KEY (data_id, field_key),
   INDEX idx_string (string_value(100)),
   INDEX idx_number (number_value),
   INDEX idx_enum (enum_value)  -- 新增enum类型索引
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-PARTITION BY KEY(data_id) PARTITIONS 16;  -- 按数据ID分片，默认16个分区
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;  -- 按数据ID分片，默认16个分区
 ```
