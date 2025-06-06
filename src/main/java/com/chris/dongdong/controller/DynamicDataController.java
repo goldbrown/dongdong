@@ -15,7 +15,7 @@ public class DynamicDataController {
     @Resource
     private DynamicDataService service;
 
-    @PostMapping
+    @PostMapping("/create")
     public CommonResponse create(@RequestBody DynamicDataRequestDTO request) {
          service.create(request);
          return CommonResponse.success();

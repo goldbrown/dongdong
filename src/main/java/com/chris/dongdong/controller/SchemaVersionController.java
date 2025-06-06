@@ -16,13 +16,12 @@ public class SchemaVersionController {
         this.service = service;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/create")
     public SchemaVersionResponse create(@RequestBody SchemaVersionRequest request) {
         return service.create(request);
     }
 
-    @PutMapping("/{versionId}")
+    @PostMapping("/update/{versionId}")
     public SchemaVersionResponse update(
             @PathVariable Long versionId, 
             @RequestBody SchemaVersionRequest request) {

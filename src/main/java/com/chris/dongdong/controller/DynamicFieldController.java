@@ -15,13 +15,13 @@ public class DynamicFieldController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public CommonResponse create(@RequestBody DynamicFieldValue fieldValue) {
         service.create(fieldValue);
         return CommonResponse.success();
     }
 
-    @PutMapping("/{dataId}/{fieldKey}")
+    @PostMapping("/update/{dataId}/{fieldKey}")
     public CommonResponse update(
             @PathVariable Long dataId,
             @PathVariable String fieldKey,

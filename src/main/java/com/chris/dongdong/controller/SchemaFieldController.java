@@ -17,13 +17,13 @@ public class SchemaFieldController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public CommonResponse create(@RequestBody SchemaFieldEntity field) {
         service.create(field);
         return CommonResponse.success();
     }
 
-    @PutMapping("/{id}")
+    @PostMapping("/update/{id}")
     public CommonResponse update(
             @PathVariable Long id,
             @RequestBody SchemaFieldEntity field) {
